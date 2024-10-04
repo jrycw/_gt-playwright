@@ -1,0 +1,5 @@
+# great_tables[extra]
+# pandas
+playwright
+pytest
+pytest-playwright
