@@ -1,5 +1,5 @@
-# great_tables[extra]
-# pandas
+great_tables[all]
+pandas
 playwright
 pytest
 pytest-playwright

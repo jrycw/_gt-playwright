@@ -24,10 +24,7 @@ jobs:
             python-version: ${{ matrix.python-version }}
         - name: Install dependencies
           run: |
-            # we are using the -e flag, so that code cov finds the source.
-            # this is not ideal, since installing an editable can technically
-            # differ from a normal install in surprising ways.
-            pip install -e '.[all]' playwright pytest-playwright
+            pip install -r requirements.txt
         - name: pytest unit tests
           run: |
             pytest
