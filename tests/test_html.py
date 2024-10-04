@@ -71,7 +71,7 @@ def html_content(gtbl_html):
 @pytest.fixture(scope="module", autouse=True)
 def write_index_html(html_content):
     index_html = Path("index.html")
-    index_html.write_text(html_content, encoding="utf-8", newline="\n")
+    index_html.write_text(html_content, encoding="utf-8")
     yield
     index_html.unlink()
 
