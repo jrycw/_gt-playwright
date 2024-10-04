@@ -19,6 +19,7 @@ title = "title"
 subtitle = "subtitle"
 stubhead = "stubhead"
 spanner = "spanner"
+spanner_columns = ["date", "time", "datetime"]
 source_note = "source_note"
 columns = exibble.columns.to_list()
 columns.remove("group")  # using in tab_stub
@@ -46,7 +47,7 @@ def gtbl_html():
         GT(exibble)
         .tab_stub(groupname_col="group", rowname_col="row")
         .tab_stubhead(stubhead)
-        .tab_spanner(spanner, columns=["date", "time", "datetime"])
+        .tab_spanner(spanner, columns=spanner_columns)
         .tab_header(title=title, subtitle=subtitle)
         .tab_source_note(source_note)
     ).as_raw_html()
@@ -100,6 +101,11 @@ def test_page(core):
         # spanner
         spanner_loc = page.locator(".gt_column_spanner")
         expect(spanner_loc).to_have_text(spanner)
+
+        for s_col in spanner_columns:
+            spanner_col_loc = page.locator(f"#{s_col}")
+            rowspan = spanner_col_loc.get_attribute("rowspan")
+            assert rowspan == "1"
 
         # title
         title_loc = page.locator(".gt_title")
