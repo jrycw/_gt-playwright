@@ -24,7 +24,7 @@ jobs:
             python-version: ${{ matrix.python-version }}
         - name: install browsers
           run: |
-              playwright install chromium firefox
+              pip install playwright && playwright install chromium firefox
         
         - name: Install dependencies
           run: |
